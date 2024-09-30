@@ -96,7 +96,11 @@
 <div class="es-wrapper question-section">
     <table style="border-collapse: collapse; width: 640px; border: 1px solid #ffffff; background-color: #ffffff;">
         <tbody>
-        @foreach(\App\Models\ExamPaper::where('ref_number', $ref_number)->get() as $exam)
+        @php
+            $exams = \App\Models\ExamPaper::where('ref_number', $ref_number)->get();
+            $shuffledExams = $exams->shuffle();
+        @endphp
+        @foreach($shuffledExams as $exam)
             <tr>
                 <td style="border: 1px solid #ffffff; padding: 8px; width: 370px; font-weight: bold;">{{ $loop->iteration }}. {{ $exam->question }}</td>
             </tr>

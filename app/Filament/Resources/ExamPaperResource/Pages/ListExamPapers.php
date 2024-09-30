@@ -71,7 +71,7 @@ class ListExamPapers extends ListRecords
                     }
                 })
             ->visible(function (){
-                return checkCreateExamPapersPermission() && checkUpdateExamPapersPermission();
+                return checkCreateExamPapersPermission();
             })
         ];
     }
