@@ -23,6 +23,157 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+
+//Exam Marking Key - Initiator
+function checkCreateInitiatorPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Initiator (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Initiator (Exam Marking Key)')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
+    }
+    return false;
+}
+
+function checkReadInitiatorPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Initiator (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Initiator (Exam Marking Key)')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
+    }
+    return false;
+}
+
+function checkUpdateInitiatorPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Initiator (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Initiator (Exam Marking Key)')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
+    }
+    return false;
+}
+
+function checkDeleteInitiatorPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Initiator (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Initiator (Exam Marking Key)')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
+    }
+    return false;
+}
+
+//Exam Marking Key Confirmer
+function checkCreateConfirmerPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Confirmer (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Confirmer (Exam Marking Key)')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
+    }
+    return false;
+}
+
+function checkReadConfirmerPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Confirmer (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Confirmer (Exam Marking Key)')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
+    }
+    return false;
+}
+
+function checkUpdateConfirmerPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Confirmer (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Confirmer (Exam Marking Key)')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
+    }
+    return false;
+}
+
+function checkDeleteConfirmerPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Confirmer (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Confirmer (Exam Marking Key)')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
+    }
+    return false;
+}
+
+
+//Exam Marking Key Approver
+function checkCreateApproverPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Approver (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Approver (Exam Marking Key)')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
+    }
+    return false;
+}
+
+function checkReadApproverPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Approver (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Approver (Exam Marking Key)')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
+    }
+    return false;
+}
+
+function checkUpdateApproverPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Approver (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Approver (Exam Marking Key)')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
+    }
+    return false;
+}
+
+function checkDeleteApproverPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Approver (Exam Marking Key)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Approver (Exam Marking Key)')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
+    }
+    return false;
+}
+
+
+//Exam Marking Key Downloader
+function checkCreateDownloaderPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Downloader (Exam Question Paper)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Downloader (Exam Question Paper)')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
+    }
+    return false;
+}
+
+function checkReadDownloaderPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Downloader (Exam Question Paper)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Downloader (Exam Question Paper)')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
+    }
+    return false;
+}
+
+function checkUpdateDownloaderPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Downloader (Exam Question Paper)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Downloader (Exam Question Paper)')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
+    }
+    return false;
+}
+
+function checkDeleteDownloaderPermission(): bool
+{
+    $user = Auth::user();
+    if(Permission::where('module', 'Downloader (Exam Question Paper)')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Downloader (Exam Question Paper)')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
+    }
+    return false;
+}
+
 //Audit Trails
 function checkCreateAuthTrailsPermission(): bool
 {

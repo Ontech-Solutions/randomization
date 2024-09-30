@@ -35,25 +35,25 @@ class ExamQuestionResource extends Resource
 
     protected static ?string $navigationGroup = 'System Settings';
 
-    public static function getEloquentQuery(): Builder
-    {
-        // Check if there's an authenticated user
-        $user = Auth::user();
-
-        $query = parent::getEloquentQuery();
-
-        if ($user && $user->role_id == 1) {
-            // Customize the query as needed
-            return $query->orderBy('created_at', 'desc');
-        } else {
-            return $query->where('user_id', $user->id)
-                ->orderBy('created_at', 'desc');
-        }
-
-        // If it's not regulator_id 1 or no authenticated user, return an empty query
-        return $query->where("user_id", -20);
-
-    }
+//    public static function getEloquentQuery(): Builder
+//    {
+//        // Check if there's an authenticated user
+//        $user = Auth::user();
+//
+//        $query = parent::getEloquentQuery();
+//
+//        if ($user && $user->role_id == 1) {
+//            // Customize the query as needed
+//            return $query->orderBy('created_at', 'desc');
+//        } else {
+//            return $query->where('user_id', $user->id)
+//                ->orderBy('created_at', 'desc');
+//        }
+//
+//        // If it's not regulator_id 1 or no authenticated user, return an empty query
+//        return $query->where("user_id", -20);
+//
+//    }
 
     // public static function shouldRegisterNavigation(): bool
     // {
@@ -164,17 +164,17 @@ class ExamQuestionResource extends Resource
 
                 Tables\Columns\TextColumn::make('program_id')
                     ->label("Program")
-                    ->formatStateUsing(function($state){
+                    ->formatStateUsing(function($record){
                         //return ExamCategory::where('id', $state)->first()->name  ?? "";
-                        return Program::where('id', $state)->first()->name  ?? "";
+                        return Program::where('id', $record->program_id)->first()->name  ?? $record->program_id;
                     })
                     ->wrap()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('competency_id')
                     ->label("Competency")
-                    ->formatStateUsing(function($state){
-                        return Competency::where('id', $state)->first()->name  ?? "";
+                    ->formatStateUsing(function($record){
+                        return Competency::where('id', $record->competency_id)->first()->name  ?? $record->competency_id;
                     })
                     ->wrap()
                     ->searchable()
@@ -187,7 +187,7 @@ class ExamQuestionResource extends Resource
                     ->wrap()
                     ->searchable()
                     ->sortable(),
-               
+
                 Tables\Columns\TextColumn::make('option_a')
                     ->label("Option A")
                     ->wrap()

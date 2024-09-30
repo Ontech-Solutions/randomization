@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use function App\Filament\Resources\BusinessResource\Pages\generateAccNumber;
+use function App\Filament\Resources\checkCreateExamPapersPermission;
+use function App\Filament\Resources\checkUpdateExamPapersPermission;
 
 class ListExamPapers extends ListRecords
 {
@@ -68,6 +70,9 @@ class ListExamPapers extends ListRecords
                             ->body('Failed to generate exam paper: ' . $e->getMessage());
                     }
                 })
+            ->visible(function (){
+                return checkCreateExamPapersPermission() && checkUpdateExamPapersPermission();
+            })
         ];
     }
 

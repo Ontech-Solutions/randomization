@@ -378,6 +378,38 @@ class PermissionSeeder extends Seeder
                 "update" => 1,
                 "delete" => 1
             ],
+            [
+                "role_id" => 1,
+                "module" => "Initiator (Exam Marking Key)",
+                "create" => 1,
+                "read" => 1,
+                "update" => 1,
+                "delete" => 1
+            ],
+            [
+                "role_id" => 1,
+                "module" => "Confirmer (Exam Marking Key)",
+                "create" => 1,
+                "read" => 1,
+                "update" => 1,
+                "delete" => 1
+            ],
+            [
+                "role_id" => 1,
+                "module" => "Approver (Exam Marking Key)",
+                "create" => 1,
+                "read" => 1,
+                "update" => 1,
+                "delete" => 1
+            ],
+            [
+                "role_id" => 1,
+                "module" => "Downloader (Exam Question Paper)",
+                "create" => 1,
+                "read" => 1,
+                "update" => 1,
+                "delete" => 1
+            ],
         ]);
     }
 }
