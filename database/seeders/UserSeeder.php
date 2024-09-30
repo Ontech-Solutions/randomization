@@ -16,28 +16,28 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => 'Wezi Munthali',
-                'email' => 'wezi@ontech.co.zm',
+                'name' => 'Komani Lungu',
+                'email' => 'klungu@hpcz.org.zm',
                 'password' => Hash::make('Admin.1234'),
                 'user_id' => 1,
-                'role_id' => 1,
+                'role_id' => 3,
                 'branch_id' => 2
             ],
             [
-                'name' => 'Prisca Mwanza',
-                'email' => 'prisca@ontech.co.zm',
+                'name' => 'Ntazana Kanchule',
+                'email' => 'nkanchule@hpcz.org.zm',
                 'password' => Hash::make('Admin.1234'),
                 'user_id' => 2,
                 'role_id' => 2,
                 'branch_id' => 1
             ],
             [
-                'name' => 'Dennis Zitha',
-                'email' => 'dennis@ontech.co.zm',
+                'name' => 'Jon Kasalika',
+                'email' => 'jkasalika@hpcz.org.zm',
                 'password' => Hash::make('Admin.1234'),
                 'user_id' => 3,
-                'role_id' => 3,
-                'branch_id' => 2
+                'role_id' => 1,
+                'branch_id' => 1
             ],
             [
                 'name' => 'Blessmore Mulenga',

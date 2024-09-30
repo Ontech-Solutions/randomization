@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use function App\Filament\Resources\BusinessResource\Pages\generateAccNumber;
+use function App\Filament\Resources\checkCreateExamPaperPermission;
 use function App\Filament\Resources\checkCreateExamPapersPermission;
 use function App\Filament\Resources\checkUpdateExamPapersPermission;
 
@@ -71,7 +72,7 @@ class ListExamPapers extends ListRecords
                     }
                 })
             ->visible(function (){
-                return checkCreateExamPapersPermission();
+                return checkCreateExamPaperPermission();
             })
         ];
     }

@@ -4,103 +4,127 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .es-wrapper {
             width: 100%;
             margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .es-content-body {
             width: 600px;
             margin: 0 auto;
             background-color: #ffffff;
-        }
-        .cover-page {
-            page-break-after: always; /* This ensures the cover page is followed by a new page */
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
         }
         .question-section {
             page-break-before: always; /* This ensures the questions start on a new page */
         }
+        table {
+            width: 100%;
+        }
+        td, th {
+            padding: 10px;
+        }
+        .header {
+            text-align: center;
+        }
+        .header img {
+            height: 90px; /* Adjust logo size */
+            width: 160px;
+            display: inline-block;
+            margin-bottom: 15px; /* Add space below the image */
+        }
+        .header h2 {
+            margin: 5px 0; /* Reduce the spacing between h2 elements */
+        }
+        .footer {
+            text-align: center;
+            border: 2px solid black;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .instructions {
+            margin-top: 20px;
+            padding: 10px;
+            border: 0px solid #000;
+        }
+        .instructions h4 {
+            text-align: left;
+            font-weight: bold;
+            text-decoration: underline; /* Make the text bold and underlined */
+        }
+        ol {
+            padding-left: 20px;
+            margin-top: 10px; /* Add space above the list */
+            margin-bottom: 10px; /* Add space below the list */
+        }
+        ol li {
+            margin-bottom: 10px; /* Add space between list items */
+        }
+        .bold-instruction {
+            font-weight: bold;
+        }
+        /* Adjust the visual layout */
+        .es-content-body {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
+
 <!-- Cover Page Section -->
 <div class="es-wrapper cover-page">
-    <table class="es-content-body">
-        <tbody>
+    <div class="es-content-body">
         <!-- Logo and Header Section -->
-        <tr>
-            <td align="center">
-                <img src="{{ $logo }}" alt="HPCZ Logo" style="height:50px; width:120px; display: inline-block;" />
-                <h1>Health Professional Council of Zambia</h1>
-                <h2>Final Examination Paper</h2>
-                <h5><strong>Ref No: {{ $ref_number }}</strong></h5>
-            </td>
-        </tr>
+        <div class="header">
+            <img src="{{ $logo }}" alt="HPCZ Logo" />
+            <h2>LICENSURE EXAMINATION</h2> 
+            <h2>FOR</h2> 
+            <h2>{{ strtoupper(\App\Models\Program::find($program_id)->name) }}</h2> <!-- Transform the program name to uppercase -->
+        </div>
+
         <!-- Exam Information -->
-        <tr>
-            <td align="center">
-                <table border="2" cellspacing="1" cellpadding="5" width="100%" style="border-color:#646464;">
-                    <tbody>
-                    <tr>
-                        <td style="background-color: #646464; color: #ffffff;"><strong>Program Name:</strong></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td style="background-color: #646464; color: #ffffff;"><strong>Examination Code:</strong></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td style="background-color: #646464; color: #ffffff;"><strong>Date of Examination:</strong></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td style="background-color: #646464; color: #ffffff;"><strong>Duration:</strong></td>
-                        <td>3 Hours</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="background-color: #ffffff; color: #000000;">
-                            <strong>Candidate Number:</strong>
-                            <p>(Write your candidate number clearly in the designated space on the answer booklet.)</p>
-                            <table border="1" width="100%" style="border-color:#646464;">
-                                <tbody>
-                                <tr>
-                                    <td style="height: 30px;">&nbsp;</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
+        <div align="center" style="margin-top: 30px;">
+            <h3>TIME ALLOWED: {{ $exam_sitting_time }} HOURS FROM 09:00 - 12:00 HOURS</h3> <!-- Time from the database or passed dynamically -->
+            <h3>DATE: {{ $exam_sitting_date }}</h3> <!-- Date from the database -->
+        </div>
+
         <!-- Instructions -->
-        <tr>
-            <td>
-                <h4 style="text-align: center;">Instructions to Candidates</h4>
-                <ul>
-                    <li>Time Allowed: You have <strong>3 hours</strong> to complete this examination.</li>
-                    <li>Write your candidate number clearly on the answer booklet. Do not write your name.</li>
-                    <li>Ensure you read all questions thoroughly before answering.</li>
-                    <li>Use blue or black ink only; pencils are allowed for diagrams only.</li>
-                    <li>Start each new question on a new page in the answer booklet.</li>
-                    <li>Submit all exam materials to the invigilator before leaving.</li>
-                </ul>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+        <div class="instructions">
+            <h4>Instructions to Candidate</h4> <!-- Aligned to the left, bold, and underlined -->
+            <ol>
+                <li>Fill in your Details on the Answer Sheet provided and ensure they are correct.</li>
+                <li>This paper consists of 150 Multiple Choice Questions (<strong>MCQs</strong>).</li>
+                <li>Read all the questions in this paper carefully. Attempt ALL questions.</li>
+                <li class="bold-instruction">Shade completely the circle for correct single best response to each question with a pencil or dark pen in the Answer Sheet provided.</li> <!-- This line is bold -->
+                <li><strong>No</strong> mark will be subtracted for any wrong answer(s).</li>
+                <li>Total Marks are <strong>100</strong>.</li>
+            </ol>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h4>DO NOT TURN THIS PAGE UNTIL YOU ARE TOLD TO DO SO BY THE INVIGILATOR</h4> <!-- Footer with border -->
+        </div>
+    </div>
 </div>
 
 <!-- Question Section -->
 <div class="es-wrapper question-section">
     <table style="border-collapse: collapse; width: 640px; border: 1px solid #ffffff; background-color: #ffffff;">
         <tbody>
-        @php
-            $exams = \App\Models\ExamPaper::where('ref_number', $ref_number)->get();
-            $shuffledExams = $exams->shuffle();
-        @endphp
-        @foreach($shuffledExams as $exam)
+        @foreach($exam_questions as $exam)
             <tr>
                 <td style="border: 1px solid #ffffff; padding: 8px; width: 370px; font-weight: bold;">{{ $loop->iteration }}. {{ $exam->question }}</td>
             </tr>

@@ -175,7 +175,7 @@ function checkDeleteDownloaderPermission(): bool
 }
 
 //Audit Trails
-function checkCreateAuthTrailsPermission(): bool
+function checkCreateAudTrailsPermission(): bool
 {
     $user = Auth::user();
     if(Permission::where('module', 'Audit Trails')->where('role_id', $user->role_id)->count() > 0){
@@ -193,7 +193,7 @@ function checkReadAuthTrailsPermission(): bool
     return false;
 }
 
-function checkUpdateAuthTrailsPermission(): bool
+function checkUpdateAuditTrailsPermission(): bool
 {
     $user = Auth::user();
     if(Permission::where('module', 'Audit Trails')->where('role_id', $user->role_id)->count() > 0){
@@ -202,7 +202,7 @@ function checkUpdateAuthTrailsPermission(): bool
     return false;
 }
 
-function checkDeleteAuthTrailsPermission(): bool
+function checkDeleteAuditTrailsPermission(): bool
 {
     $user = Auth::user();
     if(Permission::where('module', 'Audit Trails')->where('role_id', $user->role_id)->count() > 0){
@@ -400,8 +400,8 @@ function checkDeleteCompetencyPermission(): bool
 function checkCreateExamVenuePermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'ExamVenue')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamVenue')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
+    if(Permission::where('module', 'Exam Venue')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Venue')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
     }
     return false;
 }
@@ -409,8 +409,8 @@ function checkCreateExamVenuePermission(): bool
 function checkReadExamVenuePermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'ExamVenue')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamVenue')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
+    if(Permission::where('module', 'Exam Venue')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Venue')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
     }
     return false;
 }
@@ -418,8 +418,8 @@ function checkReadExamVenuePermission(): bool
 function checkUpdateExamVenuePermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'ExamVenue')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamVenue')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
+    if(Permission::where('module', 'Exam Venue')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Venue')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
     }
     return false;
 }
@@ -427,49 +427,11 @@ function checkUpdateExamVenuePermission(): bool
 function checkDeleteExamVenuePermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'ExamVenue')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamVenue')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
+    if(Permission::where('module', 'Exam Venue')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Venue')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
     }
     return false;
 }
-
-//Exam Questions
-function checkCreateExamQuestiontPermission(): bool
-{
-    $user = Auth::user();
-    if(Permission::where('module', 'ExamQuestiont')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamQuestiont')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
-    }
-    return false;
-}
-
-function checkReadExamQuestiontPermission(): bool
-{
-    $user = Auth::user();
-    if(Permission::where('module', 'ExamQuestiont')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamQuestiont')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
-    }
-    return false;
-}
-
-function checkUpdateExamQuestiontPermission(): bool
-{
-    $user = Auth::user();
-    if(Permission::where('module', 'ExamQuestiont')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamQuestiont')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
-    }
-    return false;
-}
-
-function checkDeleteExamQuestiontPermission(): bool
-{
-    $user = Auth::user();
-    if(Permission::where('module', 'ExamQuestiont')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamQuestiont')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
-    }
-    return false;
-}
-
 //Programs
 function checkCreateProgramPermission(): bool
 {
@@ -507,30 +469,30 @@ function checkDeleteProgramPermission(): bool
     return false;
 }
 
-//Exam Papers
-function checkCreateExamPapersPermission(): bool
+//Exam Paper
+function checkCreateExamPaperPermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'Exam Papers')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamPaper')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
+    if(Permission::where('module', 'Exam Paper')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Paper')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
     }
     return false;
 }
 
-function checkReadExamPapersPermission(): bool
+function checkReadExamPaperPermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'Exam Papers')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'Exam Papers')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
+    if(Permission::where('module', 'Exam Paper')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Paper')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
     }
     return false;
 }
 
-function checkUpdateExamPapersPermission(): bool
+function checkUpdateExamPaperPermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'Exam Papers')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'Exam Papers')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
+    if(Permission::where('module', 'Exam Paper')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Paper')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
     }
     return false;
 }
@@ -538,8 +500,8 @@ function checkUpdateExamPapersPermission(): bool
 function checkDeleteExamPaperPermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'Exam Papers')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'Exam Papers')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
+    if(Permission::where('module', 'Exam Paper')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Paper')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
     }
     return false;
 }
@@ -585,8 +547,8 @@ function checkDeleteExamPaperMarkingKeysPermission(): bool
 function checkCreateExamQuestionPermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'ExamQuestion')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamQuestion')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
+    if(Permission::where('module', 'Exam Question')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Question')->where('role_id', $user->role_id)->first()->create == 1 ?? false;
     }
     return false;
 }
@@ -594,8 +556,8 @@ function checkCreateExamQuestionPermission(): bool
 function checkReadExamQuestionPermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'ExamQuestion')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamQuestion')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
+    if(Permission::where('module', 'Exam Question')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Question')->where('role_id', $user->role_id)->first()->read == 1 ?? false;
     }
     return false;
 }
@@ -603,8 +565,8 @@ function checkReadExamQuestionPermission(): bool
 function checkUpdateExamQuestionPermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'ExamQuestion')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamQuestion')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
+    if(Permission::where('module', 'Exam Question')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Question')->where('role_id', $user->role_id)->first()->update == 1 ?? false;
     }
     return false;
 }
@@ -612,8 +574,8 @@ function checkUpdateExamQuestionPermission(): bool
 function checkDeleteExamQuestionPermission(): bool
 {
     $user = Auth::user();
-    if(Permission::where('module', 'ExamQuestion')->where('role_id', $user->role_id)->count() > 0){
-        return Permission::where('module', 'ExamQuestion')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
+    if(Permission::where('module', 'Exam Question')->where('role_id', $user->role_id)->count() > 0){
+        return Permission::where('module', 'Exam Question')->where('role_id', $user->role_id)->first()->delete == 1 ?? false;
     }
     return false;
 }
@@ -633,10 +595,10 @@ class UserResource extends Resource
         return 'System Users';
     }
 
-    // public static function shouldRegisterNavigation(): bool
-    // {
-    //     return checkReadUserPermission();
-    // }
+    public static function shouldRegisterNavigation(): bool
+    {
+        return checkReadUserPermission();
+    }
 
     public static function form(Form $form): Form
     {

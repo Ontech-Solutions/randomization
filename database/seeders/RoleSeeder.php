@@ -26,7 +26,7 @@ class RoleSeeder extends Seeder
                "updated_at" => now()
            ],
            [
-               "name" => "Examinations Clerk",
+               "name" => "Senior Training and examinations",
                "created_at" => now(),
                "updated_at" => now()
            ],
