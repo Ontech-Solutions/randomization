@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string("option_e")->nullable();
             $table->string("correct_answer")->nullable();
             $table->unsignedInteger("user_id")->nullable();
+            $table->string("status")->nullable();
+            $table->text("comment")->nullable();
             $table->timestamps();
         });
     }
