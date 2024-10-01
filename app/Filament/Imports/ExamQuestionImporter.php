@@ -19,17 +19,10 @@ class ExamQuestionImporter extends Importer
                 ->requiredMapping()
                 ->numeric()
                 ->rules(['required', 'integer']),
-            ImportColumn::make('competency')
+            ImportColumn::make('competency_id')
                 ->requiredMapping()
                 //->numeric()
                 ->rules(['required', 'string']),
-            ImportColumn::make('year')
-                //->requiredMapping()
-                ->rules(['required']),
-            ImportColumn::make('month')
-                //->requiredMapping()
-                ->rules(['required','string']),
-            //ImportColumn::make('image'),
             ImportColumn::make('question')
                 ->requiredMapping()
                 ->rules(['required','string']),
@@ -47,6 +40,9 @@ class ExamQuestionImporter extends Importer
                 ->rules(['required','string']),
             ImportColumn::make('option_e')
                 ->requiredMapping()
+                ->rules(['required','string']),
+            ImportColumn::make('correct_answer')
+                ->requiredMapping()
                 ->rules(['required','string'])
         ];
     }
@@ -56,7 +52,7 @@ class ExamQuestionImporter extends Importer
         $record = ExamQuestion::firstOrNew([
              // Update existing records, matching them by `$this->data['column_name']`
              //'competency_id' => $this->data['competency_id'],
-             'competency' => $this->data['competency'],
+             'competency_id' => $this->data['competency_id'],
              'question' => $this->data['question'],
          ]);
 
