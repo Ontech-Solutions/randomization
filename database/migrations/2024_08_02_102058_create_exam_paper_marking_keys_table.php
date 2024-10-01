@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('exam_paper_marking_keys', function (Blueprint $table) {
             $table->id();
-            $table->string("ref_number")->nullable();
+            $table->string("ref_number")->index();
             $table->unsignedInteger("program_id")->nullable();
             $table->unsignedInteger("exam_category_id")->nullable();
             $table->unsignedInteger("competency_id")->nullable();

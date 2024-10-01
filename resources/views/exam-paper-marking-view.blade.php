@@ -9,38 +9,38 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 p-4">
                 <div>
-                    @if($exam_question->correct_answer == "A")
+                    @if($exam_question->correct_answer == "A" || $exam_question->correct_answer == "a")
                         <div class="rounded border-4 border-green-800 px-4 py-1 font-bold text-primary-600">A. {{ $exam_question->option_a }}</div>
                     @else
                         <div>A. {{ $exam_question->option_a }}</div>
                     @endif
                 </div>
                 <div>
-                    @if($exam_question->correct_answer == "B")
+                    @if($exam_question->correct_answer == "B" || $exam_question->correct_answer == "b")
                         <div class="rounded border-4 border-green-800 px-4 py-1 font-bold text-primary-600">B. {{ $exam_question->option_b }}</div>
                     @else
-                        <div>A. {{ $exam_question->option_b }}</div>
+                        <div>B. {{ $exam_question->option_b }}</div>
                     @endif
                 </div>
                 <div>
-                    @if($exam_question->correct_answer == "C")
+                    @if($exam_question->correct_answer == "C" || $exam_question->correct_answer == "c")
                         <div class="rounded border-4 border-green-800 px-4 py-1 font-bold text-primary-600">C. {{ $exam_question->option_c }}</div>
                     @else
-                        <div>A. {{ $exam_question->option_c }}</div>
+                        <div>C. {{ $exam_question->option_c }}</div>
                     @endif
                 </div>
                 <div>
-                    @if($exam_question->correct_answer == "D")
-                        <div class="rounded border-4 border-green-800 px-4 py-1 font-bold text-primary-600">A. {{ $exam_question->option_d }}</div>
+                    @if($exam_question->correct_answer == "D" || $exam_question->correct_answer == "d")
+                        <div class="rounded border-4 border-green-800 px-4 py-1 font-bold text-primary-600">D. {{ $exam_question->option_d }}</div>
                     @else
-                        <div>A. {{ $exam_question->option_d }}</div>
+                        <div>D. {{ $exam_question->option_d }}</div>
                     @endif
                 </div>
                 <div>
-                    @if($exam_question->correct_answer == "E")
-                        <div class="rounded border-4 border-green-800 px-4 py-1 font-bold text-primary-600">A. {{ $exam_question->option_e }}</div>
+                    @if($exam_question->correct_answer == "E" || $exam_question->correct_answer == "e")
+                        <div class="rounded border-4 border-green-800 px-4 py-1 font-bold text-primary-600">E. {{ $exam_question->option_e }}</div>
                     @else
-                        <div>A. {{ $exam_question->option_e }}</div>
+                        <div>E. {{ $exam_question->option_e }}</div>
                     @endif
                 </div>
             </div>

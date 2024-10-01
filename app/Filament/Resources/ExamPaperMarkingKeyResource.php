@@ -10,6 +10,8 @@ use App\Models\ExamTotalQuestion;
 use App\Models\Program;
 use App\Models\User;
 use Carbon\Carbon;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -32,29 +34,30 @@ class ExamPaperMarkingKeyResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        $query = ExamPaper::query();
+        $query = ExamPaperMarkingKey::query();
 
         if(checkCreateInitiatorPermission()){
-            return $query->select('id', 'ref_number', 'program_id', 'year', 'month', 'image','exam_sitting_date', 'question', 'option_a', 'option_b','option_c','option_d','option_e','correct_answer', 'user_id','created_at','updated_at')
+            return $query->select('id', 'ref_number', 'program_id', 'year', 'month', 'image','exam_sitting_date','status','comment', 'question', 'option_a', 'option_b','option_c','option_d','option_e','correct_answer', 'user_id','created_at','updated_at')
                 ->groupBy('ref_number')
                 ->whereDate('exam_sitting_date',Carbon::now()->subDays(3)->toDateString())
                 ->orWhereNotNull('status')
                 ->orderBy('updated_at', 'desc');
         }elseif (checkCreateConfirmerPermission()){
-            return $query->select('id', 'ref_number', 'program_id', 'year', 'month', 'image','exam_sitting_date', 'question', 'option_a', 'option_b','option_c','option_d','option_e','correct_answer', 'user_id','created_at','updated_at')
+            return $query->select('id', 'ref_number', 'program_id', 'year', 'month', 'image','exam_sitting_date','status','comment', 'question', 'option_a', 'option_b','option_c','option_d','option_e','correct_answer', 'user_id','created_at','updated_at')
                 ->groupBy('ref_number')
                 ->whereDate('exam_sitting_date',Carbon::now()->subDays(3)->toDateString())
                 ->orWhere('status','initiated')
+                ->orWhere('status','confirmed')
                 ->orderBy('updated_at', 'desc');
         }elseif (checkCreateApproverPermission()){
-            return $query->select('id', 'ref_number', 'program_id', 'year', 'month', 'image','exam_sitting_date', 'question', 'option_a', 'option_b','option_c','option_d','option_e','correct_answer', 'user_id','created_at','updated_at')
+            return $query->select('id', 'ref_number', 'program_id', 'year', 'month', 'image','exam_sitting_date','status','comment', 'question', 'option_a', 'option_b','option_c','option_d','option_e','correct_answer', 'user_id','created_at','updated_at')
                 ->groupBy('ref_number')
                 ->whereDate('exam_sitting_date',Carbon::now()->subDays(3)->toDateString())
                 ->orWhere('status','confirmed')
                 ->orderBy('updated_at', 'desc');
         }
 
-        return $query->select('id', 'ref_number', 'program_id', 'year', 'month', 'image','exam_sitting_date', 'question', 'option_a', 'option_b','option_c','option_d','option_e','correct_answer', 'user_id','created_at','updated_at')
+        return $query->select('id', 'ref_number', 'program_id', 'year', 'month', 'image','exam_sitting_date','status','comment', 'question', 'option_a', 'option_b','option_c','option_d','option_e','correct_answer', 'user_id','created_at','updated_at')
             ->groupBy('ref_number')
             ->whereDate('exam_sitting_date',Carbon::now()->subDays(3)->toDateString())
             ->orderBy('updated_at', 'desc');
@@ -72,7 +75,7 @@ class ExamPaperMarkingKeyResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Placeholder::make('')
-                    ->content(function (ExamPaper $record) {
+                    ->content(function (ExamPaperMarkingKey $record) {
                         $exam_questions = ExamPaper::where('ref_number', $record->ref_number)->get();
                         return view('exam-paper-marking-view', compact('exam_questions'));
                     })
@@ -122,8 +125,8 @@ class ExamPaperMarkingKeyResource extends Resource
                             return 'You are about to generate a marking key. Confirm to proceed or cancel';
                         })
                         ->modalSubmitActionLabel('Yes, Confirm')
-                        ->visible(function(){
-                            return checkCreateConfirmerPermission();
+                        ->visible(function($record){
+                            return checkCreateConfirmerPermission() && $record->status == "initiated";
                         })
                         ->action(function($record){
                             //update the record
