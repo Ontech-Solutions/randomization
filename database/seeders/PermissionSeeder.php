@@ -89,7 +89,7 @@ class PermissionSeeder extends Seeder
             ],
             [
                 "role_id" => 1,
-                "module" => "Exam Paper Marking Key",
+                "module" => "Exam Paper Marking Keys",
                 "create" => 0,
                 "read" => 1,
                 "update" => 1,
