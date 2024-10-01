@@ -63,9 +63,8 @@ class ExamPaperMarkingKeyResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        //return checkReadExamPaperMarkingKeysPermission();
+       return checkReadExamPaperMarkingKeysPermission();
 
-        return true;
     }
 
     public static function form(Form $form): Form

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('role_id');
-            $table->string('module');
+            $table->string('module')->index();
             $table->integer('create')->default(0);
             $table->integer('read')->default(0);
             $table->integer('update')->default(0);

@@ -90,7 +90,7 @@ class PermissionSeeder extends Seeder
             [
                 "role_id" => 1,
                 "module" => "Exam Paper Marking Keys",
-                "create" => 0,
+                "create" => 1,
                 "read" => 1,
                 "update" => 1,
                 "delete" => 1
@@ -234,19 +234,19 @@ class PermissionSeeder extends Seeder
             ],
             [
                 "role_id" => 2,
-                "module" => "Exam Paper Marking Key",
-                "create" => 0,
-                "read" => 1,
-                "update" => 1,
-                "delete" => 1
-            ],
-            [
-                "role_id" => 2,
                 "module" => "Program",
                 "create" => 0,
                 "read" => 0,
                 "update" => 0,
                 "delete" => 0
+            ],
+            [
+                "role_id" => 2,
+                "module" => "Exam Paper Marking Keys",
+                "create" => 1,
+                "read" => 1,
+                "update" => 1,
+                "delete" => 1
             ],
             [
                 "role_id" => 2,
@@ -344,6 +344,14 @@ class PermissionSeeder extends Seeder
                 "read" => 0,
                 "update" => 0,
                 "delete" => 0
+            ],
+            [
+                "role_id" => 3,
+                "module" => "Exam Paper Marking Keys",
+                "create" => 1,
+                "read" => 1,
+                "update" => 1,
+                "delete" => 1
             ],
             [
                 "role_id" => 3,
@@ -458,6 +466,15 @@ class PermissionSeeder extends Seeder
                 "update" => 0,
                 "delete" => 1
             ],
+            [
+                "role_id" => 4,
+                "module" => "Exam Paper Marking Keys",
+                "create" => 0,
+                "read" => 0,
+                "update" => 0,
+                "delete" => 0
+            ],
+
             [
                 "role_id" => 4,
                 "module" => "User",

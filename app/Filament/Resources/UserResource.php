@@ -175,7 +175,7 @@ function checkDeleteDownloaderPermission(): bool
 }
 
 //Audit Trails
-function checkCreateAudTrailsPermission(): bool
+function checkCreateAuditTrailsPermission(): bool
 {
     $user = Auth::user();
     if(Permission::where('module', 'Audit Trails')->where('role_id', $user->role_id)->count() > 0){
@@ -184,7 +184,7 @@ function checkCreateAudTrailsPermission(): bool
     return false;
 }
 
-function checkReadAuthTrailsPermission(): bool
+function checkReadAuditTrailsPermission(): bool
 {
     $user = Auth::user();
     if(Permission::where('module', 'Audit Trails')->where('role_id', $user->role_id)->count() > 0){
@@ -525,7 +525,7 @@ function checkReadExamPaperMarkingKeysPermission(): bool
     return false;
 }
 
-function checkUpdateExamPaperMarkingKeyPermission(): bool
+function checkUpdateExamPaperMarkingKeysPermission(): bool
 {
     $user = Auth::user();
     if(Permission::where('module', 'Exam Paper Marking Keys')->where('role_id', $user->role_id)->count() > 0){

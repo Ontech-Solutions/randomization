@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
                 'name' => 'Komani Lungu',
                 'email' => 'klungu@hpcz.org.zm',
                 'password' => Hash::make('Admin.1234'),
-                'user_id' => 1,
                 'role_id' => 3,
                 'branch_id' => 2
             ],
@@ -27,7 +26,6 @@ class UserSeeder extends Seeder
                 'name' => 'Ntazana Kanchule',
                 'email' => 'nkanchule@hpcz.org.zm',
                 'password' => Hash::make('Admin.1234'),
-                'user_id' => 2,
                 'role_id' => 2,
                 'branch_id' => 1
             ],
@@ -35,7 +33,6 @@ class UserSeeder extends Seeder
                 'name' => 'Jon Kasalika',
                 'email' => 'jkasalika@hpcz.org.zm',
                 'password' => Hash::make('Admin.1234'),
-                'user_id' => 3,
                 'role_id' => 1,
                 'branch_id' => 1
             ],
@@ -43,7 +40,6 @@ class UserSeeder extends Seeder
                 'name' => 'Blessmore Mulenga',
                 'email' => 'blessmore@ontech.co.zm',
                 'password' => Hash::make('Admin.1234'),
-                'user_id' => 4,
                 'role_id' => 4,
                 'branch_id' => 1
             ]

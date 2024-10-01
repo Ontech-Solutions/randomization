@@ -36,7 +36,7 @@ class AuditTrailResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return checkReadAuthTrailsPermission();
+        return checkReadAuditTrailsPermission();
     }
 
     public static function form(Form $form): Form
