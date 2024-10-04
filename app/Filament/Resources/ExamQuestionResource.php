@@ -33,27 +33,14 @@ class ExamQuestionResource extends Resource
 
     protected static ?int $navigationSort = 2;
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     protected static ?string $navigationGroup = 'System Settings';
 
-//    public static function getEloquentQuery(): Builder
-//    {
-//        // Check if there's an authenticated user
-//        $user = Auth::user();
-//
-//        $query = parent::getEloquentQuery();
-//
-//        if ($user && $user->role_id == 1) {
-//            // Customize the query as needed
-//            return $query->orderBy('created_at', 'desc');
-//        } else {
-//            return $query->where('user_id', $user->id)
-//                ->orderBy('created_at', 'desc');
-//        }
-//
-//        // If it's not regulator_id 1 or no authenticated user, return an empty query
-//        return $query->where("user_id", -20);
-//
-//    }
+
 
     public static function shouldRegisterNavigation(): bool
     {
@@ -89,26 +76,7 @@ class ExamQuestionResource extends Resource
                                     ->required(),
 
                             ]),
-                        // Forms\Components\Grid::make(2)
-                        //     ->schema([
-                        //         TextInput::make('year')->required(),
-                        //         Forms\Components\Select::make("month")
-                        //             ->options([
-                        //                 "January" => "January",
-                        //                 "February" => "February",
-                        //                 "March" => "March",
-                        //                 "April" => "April",
-                        //                 "May" => "May",
-                        //                 "June" => "June",
-                        //                 "July" => "July",
-                        //                 "August" => "August",
-                        //                 "September" => "September",
-                        //                 "October" => "October",
-                        //                 "November" => "November",
-                        //                 "December" => "December"
-                        //             ])
-                        //         ->required()
-                        //     ]),
+                        
                         Forms\Components\Textarea::make("question")
                             ->required(),
                         Forms\Components\Section::make('image')
@@ -142,8 +110,7 @@ class ExamQuestionResource extends Resource
                         Forms\Components\Grid::make(2)
                             ->schema([
                                 TextInput::make('option_e')
-                                    ->label("Option E")
-                                    ->required(),
+                                    ->label("Option E"),
                                     TextInput::make('correct_answer')
                                     ->label("Correct Answer")
                                     ->required(),
